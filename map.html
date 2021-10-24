@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Learn D3
+        </title>
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="./style.css">
+    </head>
+    <body>
+        <div class = "navBar" id='title'>
+            <div>
+            Inspection scores of restaurants in Stanford-Palo Alto area
+            </div>
+            <div>
+                <a href="" id='code'>See code (github)</a>
+            </div>
+        </div>
+        <div class="container">
+            <div id='mapbox'></div>
+            <div id='instructions'>
+                <h2>Set location</h2>
+                <p class="ins">Drag the large circles to position their centers on desired locations</p>
+                <p class="ins">Change radius of the cyan circle using the slider below</p>
+                <div class="slider1">
+                    <input type="range" min="1" max="100" value="10" id="radius_slider1">
+                    <p id="radiusValue1">10</p>
+                </div>
+                <p class="ins">Change radius of the grey circle using the slider below</p>
+                <div class="slider2">
+                    <input type="range" min="1" max="100" value="10" id="radius_slider2">
+                    <p id="radiusValue2">10</p>
+                </div>
+                <h2>Filter highlighted data</h2>
+                <div class="options">
+                    <label for="fname" class="ins">Restaurant name</label>
+                    <input type="text" id="resName" name="resName"><br><br>
+                </div>
+                <div class="options">
+                    <label for="fname" class="ins">Address</label>
+                    <input type="text" id="resAddress" name="resAddress"><br><br>
+                </div>
+                <div class="options">
+                    <label for="fname" class="ins">Maximum score</label>
+                    <input type="number" id="maxScore" name="maxScore"><br><br>
+                </div>
+                <div class="options"> 
+                    <label for="fname" class="ins">Minimum score</label>
+                    <input type="number" id="minScore" name="minScore"><br><br>
+                </div>
+            </div>
+        </div>
+        <script type='module' src="./createmap.js"></script>
+    </body>
+</html>
