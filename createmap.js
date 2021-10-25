@@ -259,13 +259,13 @@ let radiusSlider1 = document.getElementById('radius_slider1')
 radiusSlider1.max = mapBoxWidth/2
 radiusSlider1.value = areaCircles[0].r
 let radiusValue1 = document.getElementById('radiusValue1')
-radiusValue1.innerHTML = radiusSlider1.value
+radiusValue1.innerHTML = getMiles(radiusSlider1.value)
 radiusSlider1.addEventListener('input', ()=>{
   resNameInput.value = ''
   resAddressInput.value = ''
   maxScoreInput.value = null
   minScoreInput.value = null
-  radiusValue1.innerHTML = radiusSlider1.value
+  radiusValue1.innerHTML = getMiles(radiusSlider1.value)
   areaCircles[0].r = radiusSlider1.value
   d3.select(`#cir0`)
         .attr('r',radiusSlider1.value)
@@ -281,13 +281,13 @@ let radiusSlider2 = document.getElementById('radius_slider2')
 radiusSlider2.max = mapBoxWidth/2
 radiusSlider2.value = areaCircles[1].r
 let radiusValue2 = document.getElementById('radiusValue2')
-radiusValue2.innerHTML = radiusSlider2.value
+radiusValue2.innerHTML = getMiles(radiusSlider2.value)
 radiusSlider2.addEventListener('input', ()=>{
   resNameInput.value = ''
   resAddressInput.value = ''
   maxScoreInput.value = null
   minScoreInput.value = null
-  radiusValue2.innerHTML = radiusSlider2.value
+  radiusValue2.innerHTML = getMiles(radiusSlider2.value)
   areaCircles[1].r = radiusSlider2.value
   d3.select(`#cir1`)
         .attr('r',radiusSlider2.value)
@@ -336,5 +336,12 @@ function filterData(data){
     filtered = filtered.filter(item => item.Score >= (+minScoreInput.value))
   }
   return filtered
+}
+
+function getMiles(val){
+  let p1 = projection.invert([0,0])
+  let p2 = projection.invert([val,0])
+  let dist = d3.geoDistance(p1, p2) *180/Math.PI * 60 * 1.1515
+  return dist.toFixed(3)
 }
 
